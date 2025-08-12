@@ -94,4 +94,4 @@ export const fonts = {
     fontWeight: '500',
     lineHeight: '140%',
   },
-};
+} as const;

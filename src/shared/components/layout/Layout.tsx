@@ -1,11 +1,12 @@
 import { Outlet } from 'react-router-dom';
+import { type ReactNode } from 'react';
 
-const Layout = () => {
+type LayoutProps = { header?: ReactNode };
+
+const Layout = ({ header }: LayoutProps) => {
   return (
     <>
-      <header>
-        <h1>임시 헤더</h1>
-      </header>
+      <header>{header}</header>
       <main>
         <Outlet />
       </main>
