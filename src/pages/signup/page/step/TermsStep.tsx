@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { PATH } from '@shared/constants/path';
+import { SIGNUP_STEPS } from '@shared/constants/path';
 
 import * as s from './TermsStep.css';
 
@@ -41,7 +41,7 @@ const TermsStep = () => {
 
   const handleNext = () => {
     if (requiredAllChecked) {
-      navigate(`${PATH.SIGNUP}/verify`);
+      navigate(SIGNUP_STEPS.VERIFY);
     }
   };
 

@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import { PATH } from '@shared/constants/path';
+import { SIGNUP_STEPS } from '@shared/constants/path';
 
 import * as s from './VerifyStep.css';
 
@@ -11,7 +11,7 @@ const VerifyStep = () => {
   const navigate = useNavigate();
 
   const handleNext = () => {
-    navigate(`${PATH.SIGNUP}/account`);
+    navigate(SIGNUP_STEPS.ACCOUNT);
   };
 
   return (

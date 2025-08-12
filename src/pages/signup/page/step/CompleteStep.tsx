@@ -9,7 +9,7 @@ const CompleteStep = () => {
   const navigate = useNavigate();
 
   const handleNext = () => {
-    navigate(`${PATH.SIGNUP}/login`);
+    navigate(PATH.LOGIN);
   };
 
   return (

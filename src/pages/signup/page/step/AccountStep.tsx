@@ -1,6 +1,6 @@
 import type { FormEvent } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { PATH } from '@shared/constants/path';
+import { SIGNUP_STEPS } from '@shared/constants/path';
 
 import * as s from './AccountStep.css';
 
@@ -11,7 +11,7 @@ const AccountStep = () => {
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    navigate(`${PATH.SIGNUP}/complete`);
+    navigate(SIGNUP_STEPS.COMPLETE);
   };
 
   return (
