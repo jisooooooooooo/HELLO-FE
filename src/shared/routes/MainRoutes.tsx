@@ -11,6 +11,9 @@ import TermsStep from '@/pages/signup/page/step/TermsStep';
 import VerifyStep from '@/pages/signup/page/step/VerifyStep';
 import AccountStep from '@/pages/signup/page/step/AccountStep';
 import CompleteStep from '@/pages/signup/page/step/CompleteStep';
+import ReminisceList from '@/pages/reminisce/page/ReminisceList';
+import ReminisceWrite from '@/pages/reminisce/page/ReminisceWrite';
+import ReminisceDetail from '@/pages/reminisce/page/ReminisceDetail';
 
 export const MainRoutes: RouteObject[] = [
   // 기본 헤더
@@ -34,6 +37,15 @@ export const MainRoutes: RouteObject[] = [
           { path: 'complete', element: <CompleteStep /> },
         ],
       },
+    ],
+  },
+  // 회상노트
+  {
+    element: <Layout header={<PageHeader title="회상노트" />} />,
+    children: [
+      { path: PATH.REMINISCE, element: <ReminisceList /> },
+      { path: `${PATH.REMINISCE}/new`, element: <ReminisceWrite /> },
+      { path: `${PATH.REMINISCE}/:id`, element: <ReminisceDetail /> },
     ],
   },
 ];

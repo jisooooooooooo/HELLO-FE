@@ -17,4 +17,9 @@ export const layout = {
     flexDirection: 'column',
     alignItems: 'center',
   },
+  flexColumnBetween: {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'space-between',
+  },
 } as const;

@@ -11,6 +11,7 @@ export const baseButton = style([
     borderRadius: '5px',
     border: 'none',
     color: colors.white01,
+    gap: '0.5rem',
     cursor: 'pointer',
   },
 ]);
@@ -18,3 +19,10 @@ export const baseButton = style([
 export const primaryButton = style([baseButton, { backgroundColor: colors.blue02 }]);
 
 export const secondaryButton = style([baseButton, { backgroundColor: colors.blue03 }]);
+
+export const iconWrapper = style([
+  {
+    width: '1.5rem',
+    height: '1.5rem',
+  },
+]);
