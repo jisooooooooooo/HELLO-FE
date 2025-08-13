@@ -3,6 +3,7 @@ export const PATH = {
   SIGNUP: '/signup',
   LOGIN: '/login',
   REMINISCE: '/reminisce',
+  MYPAGE: '/mypage',
 } as const;
 
 export const SIGNUP_STEPS = {

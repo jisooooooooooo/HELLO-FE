@@ -8,6 +8,11 @@ export const layout = {
     display: 'flex',
     alignItems: 'center',
   },
+  flexBetweenCenter: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
   flexColumn: {
     display: 'flex',
     flexDirection: 'column',
