@@ -1,4 +1,5 @@
 import { style } from '@vanilla-extract/css';
+
 import { colors } from '@/styles/token/color.css.ts';
 import { fonts } from '@/styles/token/typography.css.ts';
 

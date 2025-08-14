@@ -14,6 +14,7 @@ import CompleteStep from '@/pages/signup/page/step/CompleteStep';
 import ReminisceList from '@/pages/reminisce/page/ReminisceList';
 import ReminisceWrite from '@/pages/reminisce/page/ReminisceWrite';
 import ReminisceDetail from '@/pages/reminisce/page/ReminisceDetail';
+import MyPage from '@/pages/mypage/page/MyPage';
 
 export const MainRoutes: RouteObject[] = [
   // 기본 헤더
@@ -47,5 +48,10 @@ export const MainRoutes: RouteObject[] = [
       { path: `${PATH.REMINISCE}/new`, element: <ReminisceWrite /> },
       { path: `${PATH.REMINISCE}/:id`, element: <ReminisceDetail /> },
     ],
+  },
+  // 마이페이지
+  {
+    element: <Layout header={<PageHeader title="마이페이지" />} />,
+    children: [{ path: PATH.MYPAGE, element: <MyPage /> }],
   },
 ];

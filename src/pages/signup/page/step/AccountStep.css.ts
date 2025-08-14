@@ -23,10 +23,7 @@ export const inputGroup = style([
   },
 ]);
 
-export const inputLabel = style([
-  fonts.caption01,
-  { marginBottom: '0.3rem', color: colors.black01 },
-]);
+export const inputLabel = style([fonts.body04, { marginBottom: '0.3rem', color: colors.black01 }]);
 
 export const input = style([
   layout.flexAlignCenter,

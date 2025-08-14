@@ -6,7 +6,6 @@ const SvgIcProfile = (props: SVGProps<SVGSVGElement>) => (
     height="1em"
     fill="none"
     viewBox="0 0 28 28"
-    className={props.className}
     {...props}
   >
     <path
