@@ -59,7 +59,7 @@ const MyPage = () => {
           selectedMinute={selectedMinute}
           ampm={ampm}
           showTimePicker={showTimePicker}
-          togglePicker={() => setShowTimePicker(!showTimePicker)}
+          togglePicker={() => setShowTimePicker((prev) => !prev)}
           updateTime={updateTime}
           setAmpm={setAmpm}
         />
