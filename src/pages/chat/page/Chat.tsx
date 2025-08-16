@@ -40,23 +40,30 @@ declare global {
 type Msg = {
   id: string;
   text: string;
-  who: 'me' | 'other';
+  who: 'me' | 'other'; // me = 할머니(오른쪽), other = 가상손녀(왼쪽)
   date?: string;
 };
 
+// 상대(손녀) → 나(할머니) → 상대 → 나 순서
 const initial: Msg[] = [
   { id: 'd1', text: '', who: 'other', date: '7월 8일 (화)' },
-  { id: 'm1', text: '할머니~\n오늘은 어떻게 지내셨어요?', who: 'me' },
-  { id: 'o1', text: '그냥 집에 있었지. 요즘은\n바깥 나가기도 귀찮아', who: 'other' },
-  {
-    id: 'm2',
-    text: '그럴 수 있어요. 그래도 이렇게 이야기 나누는 건 참 좋죠?\n그럼 집에서 저한테 옛날 이야기 해주세요!',
-    who: 'me',
-  },
+
+  { id: 'o1', who: 'other', text: '할머니~\n오늘은 어떻게 지내셨어요?' },
+  { id: 'm1', who: 'me', text: '그냥 집에 있었지. 요즘은 바깥 나가기도 귀찮아' },
+
   {
     id: 'o2',
-    text: '옛날에 말이야, 내가 너희 할아버지 처음 만났을 땐 봄이었지.\n진달래가 한창 피던 날이었어.',
     who: 'other',
+    text:
+      '그럴 수 있어요. 그래도 이렇게 이야기 나누는 건 참 좋죠?\n' +
+      '그럼 집에서 저한테 옛날 이야기 해주세요!',
+  },
+  {
+    id: 'm2',
+    who: 'me',
+    text:
+      '옛날에 말이야, 내가 너희 할아버지 처음 만났을 땐 봄이었지.\n' +
+      '진달래가 한창 피던 날이었어.',
   },
 ];
 
@@ -68,7 +75,7 @@ const Chat = () => {
   const listRef = useRef<HTMLDivElement>(null);
   const recognitionRef = useRef<ISpeechRecognition | null>(null);
 
-  // 새 메시지 생길 때 리스트 하단으로 스크롤
+  // 새 메시지 생길 때 하단 스크롤
   useEffect(() => {
     const el = listRef.current;
     if (el) {
@@ -92,7 +99,7 @@ const Chat = () => {
     }
     setMsgs((prev) => [
       ...prev,
-      { id: crypto.randomUUID?.() ?? String(Date.now()), text: trimmed, who: 'me' },
+      { id: (crypto as any).randomUUID?.() ?? String(Date.now()), text: trimmed, who: 'me' },
     ]);
     setText('');
   };
@@ -105,7 +112,6 @@ const Chat = () => {
   };
 
   const handleMic = () => {
-    // 듣는 중이면 중지
     if (listening && recognitionRef.current) {
       recognitionRef.current.stop();
       setListening(false);
@@ -161,40 +167,42 @@ const Chat = () => {
           return (
             <div key={m.id} className={`${s.row} ${isMe ? s.right : s.left}`}>
               <div className={isMe ? s.bubbleMe : s.bubbleOther}>{m.text}</div>
-              {/* 시간 표시는 제거 */}
             </div>
           );
         })}
       </div>
 
-      {/* 입력 바 (마이크 왼쪽, 전송 오른쪽) */}
+      {/* 입력 바: 둥근 입력박스 안에 textarea + mic + send */}
       <div className={s.inputBar}>
-        <button
-          className={s.iconBtn}
-          aria-label={listening ? '음성 입력 중지' : '음성 입력'}
-          title={listening ? '음성 입력 중지' : '음성 입력'}
-          onClick={handleMic}
-        >
-          <img
-            src="/svgs/ic_mic.svg"
-            alt=""
-            width={24}
-            height={24}
-            style={{ opacity: listening ? 0.6 : 1 }}
+        <div className={s.inputBox}>
+          <textarea
+            className={s.input}
+            value={text}
+            placeholder="여기에 메시지를 입력하세요..."
+            onChange={(e) => setText(e.target.value)}
+            onKeyDown={handleKeyDown}
           />
-        </button>
 
-        <textarea
-          className={s.input}
-          value={text}
-          placeholder="여기에 메시지를 입력하세요…"
-          onChange={(e) => setText(e.target.value)}
-          onKeyDown={handleKeyDown}
-        />
+          {/* 마이크 버튼 (조금 더 큼) */}
+          <button
+            className={s.micBtn}
+            aria-label={listening ? '음성 입력 중지' : '음성 입력'}
+            title={listening ? '음성 입력 중지' : '음성 입력'}
+            onClick={handleMic}
+          >
+            <img
+              src="/svgs/ic_mic.svg"
+              alt="mic"
+              className={s.micIconImg} // ✅ 32px
+              style={{ opacity: listening ? 0.6 : 1 }}
+            />
+          </button>
 
-        <button className={s.iconBtn} aria-label="전송" title="전송" onClick={send}>
-          <img src="/svgs/ic_send.svg" alt="" width={24} height={24} />
-        </button>
+          {/* 전송 버튼 (아이콘만, 28px) */}
+          <button className={s.iconBtn} aria-label="전송" title="전송" onClick={send}>
+            <img src="/svgs/ic_send.svg" alt="send" className={s.iconImg} />
+          </button>
+        </div>
       </div>
     </div>
   );
