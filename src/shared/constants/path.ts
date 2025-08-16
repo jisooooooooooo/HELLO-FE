@@ -4,6 +4,7 @@ export const PATH = {
   LOGIN: '/login',
   REMINISCE: '/reminisce',
   MYPAGE: '/mypage',
+  CHAT: '/chat',
 } as const;
 
 export const SIGNUP_STEPS = {

@@ -1,7 +1,10 @@
 // src/pages/home/page/Home.tsx
+import { useNavigate } from 'react-router-dom';
 import * as styles from './Home.css.ts';
 
 const Home = () => {
+  const navigate = useNavigate();
+
   return (
     <div className={styles.container}>
       {/* 날짜 & 인사말 */}
@@ -21,29 +24,33 @@ const Home = () => {
 
       {/* 메뉴 4칸 (2x2) */}
       <section className={styles.menuGrid}>
-        <button className={styles.menuItem} type="button">
-          <span className={styles.menuIcon} aria-hidden>
+        {/* 채팅 */}
+        <button className={styles.menuItem} type="button" onClick={() => navigate('/chat')}>
+          <span className={styles.menuIcon} aria-hidden={true}>
             💬
           </span>
           <span className={styles.menuLabel}>채팅</span>
         </button>
 
+        {/* 회상 기록 */}
         <button className={styles.menuItem} type="button">
-          <span className={styles.menuIcon} aria-hidden>
+          <span className={styles.menuIcon} aria-hidden={true}>
             🔁
           </span>
           <span className={styles.menuLabel}>회상 기록</span>
         </button>
 
+        {/* 일정 */}
         <button className={styles.menuItem} type="button">
-          <span className={styles.menuIcon} aria-hidden>
+          <span className={styles.menuIcon} aria-hidden={true}>
             📅
           </span>
           <span className={styles.menuLabel}>일정</span>
         </button>
 
+        {/* 게임 */}
         <button className={styles.menuItem} type="button">
-          <span className={styles.menuIcon} aria-hidden>
+          <span className={styles.menuIcon} aria-hidden={true}>
             🎮
           </span>
           <span className={styles.menuLabel}>게임</span>
