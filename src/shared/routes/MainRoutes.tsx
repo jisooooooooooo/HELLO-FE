@@ -17,6 +17,7 @@ import ReminisceWrite from '@/pages/reminisce/page/ReminisceWrite';
 import ReminisceDetail from '@/pages/reminisce/page/ReminisceDetail';
 import MyPage from '@/pages/mypage/page/MyPage';
 import Chat from '@/pages/chat/page/Chat';
+import ChatList from '@/pages/chat/page/ChatList';
 
 export const MainRoutes: RouteObject[] = [
   // 기본 헤더
@@ -61,5 +62,10 @@ export const MainRoutes: RouteObject[] = [
   {
     element: <Layout header={<ChatHeader title="채팅" />} />,
     children: [{ path: PATH.CHAT, element: <Chat /> }],
+  },
+  // 채팅 리스트 — PageHeader
+  {
+    element: <Layout header={<PageHeader title="채팅 기록" />} />,
+    children: [{ path: PATH.CHATLIST, element: <ChatList /> }],
   },
 ];

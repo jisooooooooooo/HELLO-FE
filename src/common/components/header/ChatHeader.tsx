@@ -1,8 +1,8 @@
-// src/common/components/header/ChatHeader.tsx
 import { useNavigate } from 'react-router-dom';
 
-import * as styles from './PageHeader.css';
+import { PATH } from '@shared/constants/path';
 
+import * as styles from './PageHeader.css';
 import { IcBack } from '@/assets/svgs';
 
 type ChatHeaderProps = {
@@ -16,24 +16,34 @@ const ChatHeader = ({ title = '채팅', onBack, onMenuClick }: ChatHeaderProps) 
 
   const handleBack = () => {
     if (onBack) {
-      return onBack();
+      onBack();
+      return;
     }
     navigate(-1);
   };
 
+  const handleMenu = () => {
+    if (onMenuClick) {
+      onMenuClick();
+      return;
+    }
+    navigate(PATH.CHATLIST); // ✅ /chat/list 로 이동
+  };
+
   return (
     <header className={styles.header}>
-      {/* 좌측: 뒤로가기 (PageHeader와 동일) */}
-      <button onClick={handleBack} aria-label="뒤로가기">
+      {/* 좌측: 뒤로가기 */}
+      <button type="button" onClick={handleBack} aria-label="뒤로가기">
         <IcBack className={styles.backButton} />
       </button>
 
-      {/* 중앙: 타이틀 (PageHeader와 동일) */}
+      {/* 중앙: 타이틀 */}
       <h1 className={styles.title}>{title}</h1>
 
-      {/* 우측: 햄버거 (public/svgs/ic_hamburger.svg) */}
+      {/* 우측: 햄버거 */}
       <button
-        onClick={onMenuClick}
+        type="button"
+        onClick={handleMenu}
         aria-label="메뉴"
         style={{
           position: 'absolute',
