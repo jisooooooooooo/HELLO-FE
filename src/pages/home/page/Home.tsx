@@ -26,33 +26,25 @@ const Home = () => {
       <section className={styles.menuGrid}>
         {/* 채팅 */}
         <button className={styles.menuItem} type="button" onClick={() => navigate('/chat')}>
-          <span className={styles.menuIcon} aria-hidden={true}>
-            💬
-          </span>
+          <img src="/svgs/ic_home_chat.svg" alt="채팅 아이콘" className={styles.menuSvg} />
           <span className={styles.menuLabel}>채팅</span>
         </button>
 
         {/* 회상 기록 */}
         <button className={styles.menuItem} type="button">
-          <span className={styles.menuIcon} aria-hidden={true}>
-            🔁
-          </span>
+          <img src="/svgs/ic_home_history.svg" alt="회상 아이콘" className={styles.menuSvg} />
           <span className={styles.menuLabel}>회상 기록</span>
         </button>
 
         {/* 일정 */}
         <button className={styles.menuItem} type="button">
-          <span className={styles.menuIcon} aria-hidden={true}>
-            📅
-          </span>
+          <img src="/svgs/ic_home_calendar.svg" alt="일정 아이콘" className={styles.menuSvg} />
           <span className={styles.menuLabel}>일정</span>
         </button>
 
         {/* 게임 */}
         <button className={styles.menuItem} type="button">
-          <span className={styles.menuIcon} aria-hidden={true}>
-            🎮
-          </span>
+          <img src="/svgs/ic_home_game.svg" alt="게임 아이콘" className={styles.menuSvg} />
           <span className={styles.menuLabel}>게임</span>
         </button>
       </section>

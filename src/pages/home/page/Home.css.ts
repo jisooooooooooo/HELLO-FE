@@ -12,7 +12,8 @@ export const container = style({
   flexDirection: 'column',
   gap: '12px', // 블록 간 간격 줄임
   background: colors.grey11,
-  minHeight: '100dvh',
+  minHeight: 'calc(100dvh - 5rem)',
+
   boxSizing: 'border-box',
   alignItems: 'center', // 내부 블록 가운데 정렬
 });
@@ -43,7 +44,7 @@ export const weatherCard = style({
   borderRadius: '12px',
   padding: '18px 20px', // 패딩 줄임
   display: 'flex',
-  marginBottom: '10px',
+  marginBottom: '5px',
   alignItems: 'center',
   justifyContent: 'space-between',
   boxShadow: '0 4px 16px rgba(0,0,0,0.12)',
@@ -85,7 +86,7 @@ export const menuItem = style({
   border: `1px solid ${colors.grey11}`,
   borderRadius: '10px',
   width: '100%',
-  aspectRatio: '0.6 / 0.7', // 너비 대비 세로가 더 긴 비율
+  aspectRatio: '0.9 / 1', // 너비 대비 세로가 더 긴 비율
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
@@ -115,7 +116,7 @@ export const menuLabel = style({
 
 /* (SVG 아이콘을 쓸 때) */
 export const menuSvg = style({
-  width: '24px',
-  height: '24px',
+  //width: '24px',
+  //height: '24px',
   fill: colors.blue07,
 });
