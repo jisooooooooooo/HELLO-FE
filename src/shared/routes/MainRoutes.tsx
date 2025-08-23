@@ -18,6 +18,7 @@ import ReminisceDetail from '@/pages/reminisce/page/ReminisceDetail';
 import MyPage from '@/pages/mypage/page/MyPage';
 import Chat from '@/pages/chat/page/Chat';
 import ChatList from '@/pages/chat/page/ChatList';
+import Schedule from '@/pages/schedule/page/Schedule';
 
 export const MainRoutes: RouteObject[] = [
   // 기본 헤더
@@ -56,6 +57,11 @@ export const MainRoutes: RouteObject[] = [
   {
     element: <Layout header={<PageHeader title="마이페이지" />} />,
     children: [{ path: PATH.MYPAGE, element: <MyPage /> }],
+  },
+  // ✅ 일정
+  {
+    element: <Layout header={<PageHeader title="일정" />} />,
+    children: [{ path: PATH.SCHEDULE, element: <Schedule /> }],
   },
 
   // 채팅 — 여기만 전용 헤더 사용

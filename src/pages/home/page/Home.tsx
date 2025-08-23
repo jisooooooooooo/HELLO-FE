@@ -37,7 +37,7 @@ const Home = () => {
         </button>
 
         {/* 일정 */}
-        <button className={styles.menuItem} type="button">
+        <button className={styles.menuItem} type="button" onClick={() => navigate('/schedule')}>
           <img src="/svgs/ic_home_calendar.svg" alt="일정 아이콘" className={styles.menuSvg} />
           <span className={styles.menuLabel}>일정</span>
         </button>

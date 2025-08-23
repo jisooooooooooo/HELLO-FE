@@ -6,6 +6,7 @@ export const PATH = {
   MYPAGE: '/mypage',
   CHAT: '/chat',
   CHATLIST: '/chat/list',
+  SCHEDULE: '/schedule',
 } as const;
 
 export const SIGNUP_STEPS = {
