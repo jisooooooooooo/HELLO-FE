@@ -1,4 +1,5 @@
 import { useNavigate } from 'react-router-dom';
+import logo from '@assets/images/logo.png';
 
 import * as s from './Header.css';
 
@@ -14,7 +15,7 @@ const Header = () => {
 
   return (
     <header className={s.header}>
-      <h1 className={s.title}>로고</h1>
+      <img src={logo} className={s.logo} alt="logo" />
       <button onClick={handleProfileClick}>
         <IcProfile className={s.profileButton} />
       </button>

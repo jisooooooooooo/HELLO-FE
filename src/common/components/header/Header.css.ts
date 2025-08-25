@@ -12,6 +12,13 @@ export const header = style([
   },
 ]);
 
+export const logo = style([
+  {
+    width: '8rem',
+    height: '2.8rem',
+  },
+]);
+
 export const title = style([
   fonts.body01,
   {

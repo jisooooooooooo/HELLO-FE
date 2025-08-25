@@ -56,12 +56,12 @@ const MOCK: Record<string, ScheduleItem[]> = {
   [todayKey]: [
     {
       id: 'a',
-      time: '11시30분',
+      time: '9시00분',
       ymd: todayKey,
       ymdLabel: todayLabel,
-      title: '치과 예약',
-      place: '노량진 지점',
-      note: '7일 전에 알림톡 일정입니다.',
+      title: '투썸플레이스',
+      place: '잠실 지점',
+      note: '8월 25일에 입력한 일정입니다.',
       done: true,
     },
     {

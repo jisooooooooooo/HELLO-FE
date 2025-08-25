@@ -32,7 +32,7 @@ const Home = () => {
         </button>
 
         {/* 회상 기록 */}
-        <button className={styles.menuItem} type="button">
+        <button className={styles.menuItem} type="button" onClick={() => navigate('/reminisce')}>
           <img src="/svgs/ic_home_history.svg" alt="회상 아이콘" className={styles.menuSvg} />
           <span className={styles.menuLabel}>회상 기록</span>
         </button>

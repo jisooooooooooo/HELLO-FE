@@ -112,7 +112,7 @@ const Chat = () => {
     },
     {
       match: (t: string) => /(수선화|들꽃)/.test(t) || (/봄/.test(t) && /(아이|아이들)/.test(t)),
-      reply: '그때 이야기도 더 해 주실 수 있나요? 듣고 싶어요.',
+      reply: '그때 이야기도 더 해 주세요. 듣고 싶어요.',
       audio: '/audios/ai_flow2.mp3',
     },
     {
