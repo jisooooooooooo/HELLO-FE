@@ -52,6 +52,15 @@ today.setHours(0, 0, 0, 0);
 const todayKey = ymd(today);
 const todayLabel = labelFromDate(today);
 
+// 내일 & 모레
+const tomorrow = addDays(today, 1);
+const tomorrowKey = ymd(tomorrow);
+const tomorrowLabel = labelFromDate(tomorrow);
+
+const afterTomorrow = addDays(today, 2);
+const afterTomorrowKey = ymd(afterTomorrow);
+const afterTomorrowLabel = labelFromDate(afterTomorrow);
+
 const MOCK: Record<string, ScheduleItem[]> = {
   [todayKey]: [
     {
@@ -64,23 +73,36 @@ const MOCK: Record<string, ScheduleItem[]> = {
       note: '8월 25일에 입력한 일정입니다.',
       done: true,
     },
+  ],
+  [tomorrowKey]: [
     {
       id: 'b',
       time: '13시15분',
-      ymd: todayKey,
-      ymdLabel: todayLabel,
+      ymd: tomorrowKey,
+      ymdLabel: tomorrowLabel,
       title: '노래 교실',
       place: '송파구민회관',
       note: '7월 15일에 입력한 일정입니다.',
     },
+  ],
+  [afterTomorrowKey]: [
     {
       id: 'c',
       time: '15시00분',
-      ymd: todayKey,
-      ymdLabel: todayLabel,
+      ymd: afterTomorrowKey,
+      ymdLabel: afterTomorrowLabel,
       title: '운동 모임',
       place: '체육관',
-      note: '동호회 친구들과',
+      note: '8월 15일에 입력한 일정입니다.',
+    },
+    {
+      id: 'd',
+      time: '19시00분',
+      ymd: afterTomorrowKey,
+      ymdLabel: afterTomorrowLabel,
+      title: '저녁 약속',
+      place: '강남역',
+      note: '7월 9일에 입력한 일정입니다.',
     },
   ],
 };
