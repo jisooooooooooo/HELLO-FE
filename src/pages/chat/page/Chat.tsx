@@ -1,5 +1,7 @@
+/* eslint-disable no-unused-vars */
 import { useEffect, useRef, useState } from 'react';
 import type { KeyboardEventHandler, MouseEvent } from 'react';
+
 import * as s from './Chat.css';
 
 /** ===== Web Speech 최소 타입 선언 ===== */
@@ -17,7 +19,7 @@ interface ISpeechRecognition {
   abort: () => void;
   onstart?: () => void;
   onend?: () => void;
-  onerror?: (e: unknown) => void;
+  onerror?: () => void;
   onresult?: (e: SpeechRecognitionEventLike) => void;
 }
 interface SpeechRecognitionConstructor {
@@ -66,6 +68,7 @@ const Chat = () => {
   // ✅ 고정 시나리오 진행 단계 (0→1→2)
   const stepRef = useRef<number>(0);
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const newId = () => (crypto as any).randomUUID?.() ?? String(Date.now() + Math.random());
 
   // 새 메시지 생길 때 하단 스크롤

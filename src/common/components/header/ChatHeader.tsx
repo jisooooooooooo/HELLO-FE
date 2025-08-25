@@ -1,8 +1,8 @@
 import { useNavigate } from 'react-router-dom';
-
 import { PATH } from '@shared/constants/path';
 
 import * as styles from './PageHeader.css';
+
 import { IcBack } from '@/assets/svgs';
 
 type ChatHeaderProps = {

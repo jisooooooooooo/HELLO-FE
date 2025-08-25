@@ -1,4 +1,5 @@
 import { style } from '@vanilla-extract/css';
+
 import { colors, fonts } from '@/styles/token'; // 폰트 토큰을 여기서 re-export 하지 않으면 경로를 typography.css.ts로 바꿔줘
 
 export const wrap = style({

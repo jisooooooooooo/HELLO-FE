@@ -1,5 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+
 import * as styles from './ChatList.css.ts';
 
 type ChatItem = {

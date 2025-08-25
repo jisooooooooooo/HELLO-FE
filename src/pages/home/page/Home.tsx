@@ -1,5 +1,6 @@
 // src/pages/home/page/Home.tsx
 import { useNavigate } from 'react-router-dom';
+
 import * as styles from './Home.css.ts';
 
 const Home = () => {

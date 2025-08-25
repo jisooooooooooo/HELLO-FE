@@ -33,7 +33,7 @@ export const input = style([
     height: '4rem',
     padding: '0 1.6rem',
     border: `1px solid ${colors.grey10}`,
-    borderRadius: '0.5rem',
+    borderRadius: '5px',
     backgroundColor: colors.white01,
     color: colors.black01,
     selectors: {
