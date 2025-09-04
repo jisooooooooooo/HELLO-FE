@@ -29,6 +29,7 @@ export const allTerms = style([
     marginBottom: '2.3rem',
     borderRadius: '0.5rem',
     backgroundColor: colors.grey11,
+    cursor: 'pointer',
   },
 ]);
 

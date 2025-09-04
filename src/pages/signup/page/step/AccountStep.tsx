@@ -1,4 +1,4 @@
-import type { FormEvent } from 'react';
+import { useState, type FormEvent, type ChangeEvent } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { SIGNUP_STEPS } from '@shared/constants/path';
 
@@ -8,9 +8,23 @@ import Button from '@/common/components/button/Button';
 
 const AccountStep = () => {
   const navigate = useNavigate();
+  const [password, setPassword] = useState('');
+  const [passwordConfirm, setPasswordConfirm] = useState('');
+
+  const handlePasswordChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setPassword(e.target.value);
+  };
+
+  const handlePasswordConfirmChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setPasswordConfirm(e.target.value);
+  };
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (password !== passwordConfirm) {
+      alert('비밀번호가 일치하지 않습니다.');
+      return;
+    }
     navigate(SIGNUP_STEPS.COMPLETE);
   };
 
@@ -44,6 +58,8 @@ const AccountStep = () => {
             name="password"
             autoComplete="new-password"
             required
+            value={password}
+            onChange={handlePasswordChange}
           />
         </div>
         <div className={s.inputGroup}>
@@ -58,6 +74,8 @@ const AccountStep = () => {
             name="passwordConfirm"
             autoComplete="new-password"
             required
+            value={passwordConfirm}
+            onChange={handlePasswordConfirmChange}
           />
         </div>
         <div className={s.buttonContainer}>

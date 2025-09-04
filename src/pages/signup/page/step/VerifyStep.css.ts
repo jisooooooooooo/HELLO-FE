@@ -70,7 +70,7 @@ export const descriptionTitle = style([fonts.title04, { display: 'block', color:
 
 export const descriptionText = style([fonts.body01, { color: colors.black01 }]);
 
-export const descriptionBody = style([fonts.caption02, { display: 'block', color: colors.grey11 }]);
+export const descriptionBody = style([fonts.caption02, { display: 'block', color: colors.grey07 }]);
 
 export const buttonContainer = style([
   {
