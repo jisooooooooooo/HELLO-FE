@@ -2,7 +2,6 @@ import { style } from '@vanilla-extract/css';
 
 import { colors, fonts } from '@/styles/token';
 
-
 export const wrap = style({
   background: colors.white01,
   minHeight: '100dvh',
