@@ -1,6 +1,7 @@
 import { style } from '@vanilla-extract/css';
 
-import { colors, fonts } from '@/styles/token'; // 폰트 토큰을 여기서 re-export 하지 않으면 경로를 typography.css.ts로 바꿔줘
+import { colors, fonts } from '@/styles/token';
+
 
 export const wrap = style({
   background: colors.white01,
@@ -19,7 +20,6 @@ export const row = style({
   gap: '0.8rem',
   padding: '1.2rem 1.6rem',
   borderBottom: `1px solid ${colors.grey10}`,
-  // ❌ hover/active 제거
 });
 
 export const rowMain = style({
@@ -33,11 +33,10 @@ export const rowMain = style({
   border: 'none',
   textAlign: 'left',
   cursor: 'pointer',
-  // ❌ hover/active 제거
 });
 
 export const title = style([
-  fonts.body02, // 1.6rem / 500
+  fonts.body02,
   {
     color: colors.black01,
     whiteSpace: 'nowrap',
@@ -48,24 +47,8 @@ export const title = style([
 ]);
 
 export const date = style([
-  fonts.body05, // 1.4rem / 400
+  fonts.body05,
   {
     color: colors.grey08,
   },
 ]);
-
-export const trashBtn = style({
-  flex: '0 0 auto',
-  width: '2.4rem',
-  height: '2.4rem',
-  border: 'none',
-  background: 'transparent',
-  display: 'grid',
-  placeItems: 'center',
-  cursor: 'pointer',
-});
-
-export const trashIcon = style({
-  width: '1.8rem',
-  height: '1.8rem',
-});

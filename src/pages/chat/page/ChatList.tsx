@@ -1,4 +1,3 @@
-import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import * as styles from './ChatList.css.ts';
@@ -30,31 +29,15 @@ const ChatList = () => {
     navigate(`/chat/${id}`);
   };
 
-  const handleDelete: React.MouseEventHandler<HTMLButtonElement> = (ev) => {
-    ev.stopPropagation();
-    // TODO: 삭제 로직 연결
-    alert('삭제');
-  };
-
   return (
     <div className={styles.wrap}>
       <ul className={styles.list}>
         {MOCK_LIST.map((item) => (
           <li key={item.id} className={styles.row}>
-            {/* 메인 클릭 영역을 버튼으로 */}
+            {/* 메인 클릭 영역 */}
             <button type="button" className={styles.rowMain} onClick={() => handleOpen(item.id)}>
               <div className={styles.title}>{item.title}</div>
               <div className={styles.date}>{formatKoreanDate(item.date)}</div>
-            </button>
-
-            {/* 삭제 버튼 */}
-            <button
-              type="button"
-              className={styles.trashBtn}
-              aria-label="삭제"
-              onClick={handleDelete}
-            >
-              <img src="/svgs/ic_trash.svg" alt="삭제" className={styles.trashIcon} />
             </button>
           </li>
         ))}

@@ -158,7 +158,6 @@ const Chat = () => {
     setMsgs((prev) => [...prev, myMsg]);
     setText('');
 
-    // 고정 시나리오로 답변 생성
     const { text: aiText, audio } = makeFixedReply(trimmed);
 
     setTimeout(() => {

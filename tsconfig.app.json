@@ -30,7 +30,7 @@
       "@common/*": ["src/common/*"],
       "@pages/*": ["src/pages/*"],
       "@shared/*": ["src/shared/*"],
-      "@styles/*": ["src/styles/*"],
+      "@styles/*": ["src/styles/*"]
     }
   },
   "include": ["src"]
