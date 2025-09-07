@@ -15,7 +15,6 @@ import AccountStep from '@/pages/signup/page/step/AccountStep';
 import CompleteStep from '@/pages/signup/page/step/CompleteStep';
 import ReminisceList from '@/pages/reminisce/page/ReminisceList';
 import ReminisceWrite from '@/pages/reminisce/page/ReminisceWrite';
-import ReminisceDetail from '@/pages/reminisce/page/ReminisceDetail';
 import MyPage from '@/pages/mypage/page/MyPage';
 import Chat from '@/pages/chat/page/Chat';
 import ChatList from '@/pages/chat/page/ChatList';
@@ -58,7 +57,6 @@ export const MainRoutes: RouteObject[] = [
     children: [
       { path: PATH.REMINISCE, element: <ReminisceList /> },
       { path: `${PATH.REMINISCE}/new`, element: <ReminisceWrite /> },
-      { path: `${PATH.REMINISCE}/:id`, element: <ReminisceDetail /> },
     ],
   },
 

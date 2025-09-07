@@ -41,7 +41,16 @@ export default [
     rules: {
       'react/react-in-jsx-scope': 'off',
       'no-console': 'off',
-      'no-unused-vars': 'warn',
+      // Use TS-aware unused vars rule and ignore leading underscore
+      'no-unused-vars': 'off',
+      '@typescript-eslint/no-unused-vars': [
+        'warn',
+        {
+          argsIgnorePattern: '^_',
+          varsIgnorePattern: '^_',
+          caughtErrorsIgnorePattern: '^_',
+        },
+      ],
       curly: 'error',
       'import/order': [
         'warn',

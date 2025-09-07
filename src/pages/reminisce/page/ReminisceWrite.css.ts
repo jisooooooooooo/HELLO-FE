@@ -1,4 +1,4 @@
-import { style } from '@vanilla-extract/css';
+import { keyframes, style } from '@vanilla-extract/css';
 
 import { colors, fonts, layout } from '@/styles/token';
 
@@ -38,6 +38,21 @@ export const inputTitle = style([
     outline: 'none',
     background: 'transparent',
     color: colors.black01,
+    appearance: 'none',
+    WebkitAppearance: 'none',
+    selectors: {
+      '&::-webkit-search-cancel-button': {
+        WebkitAppearance: 'none',
+      },
+      '&::-webkit-search-decoration': {
+        WebkitAppearance: 'none',
+      },
+      '&::-ms-clear': {
+        display: 'none',
+        width: 0,
+        height: 0,
+      },
+    },
     '::placeholder': {
       color: colors.grey06,
       opacity: 0.5,
@@ -70,6 +85,7 @@ export const content = style([
 ]);
 
 export const mikeButton = style([
+  layout.flexCenter,
   {
     width: '5rem',
     height: '5rem',
@@ -78,9 +94,6 @@ export const mikeButton = style([
     position: 'absolute',
     right: '2rem',
     bottom: '2rem',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
     cursor: 'pointer',
   },
 ]);
@@ -98,5 +111,48 @@ export const buttonContainer = style([
     left: '50%',
     bottom: '5.5rem',
     transform: 'translateX(-50%)',
+  },
+]);
+
+const pulse = keyframes({
+  '0%': { boxShadow: '0 0 0 0 rgba(0,0,0,0.06)', transform: 'scale(1)' },
+  '70%': { boxShadow: '0 0 0 0.8rem rgba(0,0,0,0.03)', transform: 'scale(1.02)' },
+  '100%': { boxShadow: '0 0 0 0 rgba(0,0,0,0.0)', transform: 'scale(1)' },
+});
+
+export const mikeButtonRecording = style([
+  {
+    animation: `${pulse} 1.6s ease-out infinite`,
+    opacity: 0.95,
+  },
+]);
+
+export const sttInterim = style([
+  fonts.caption01,
+  {
+    position: 'absolute',
+    left: '2rem',
+    bottom: '2.2rem',
+    maxWidth: '70%',
+    color: colors.grey06,
+    textOverflow: 'ellipsis',
+    overflow: 'hidden',
+    whiteSpace: 'nowrap',
+    pointerEvents: 'none',
+  },
+]);
+
+export const sttError = style([
+  fonts.caption01,
+  {
+    position: 'absolute',
+    left: '2rem',
+    bottom: '1rem',
+    maxWidth: '70%',
+    color: '#d9534f',
+    textOverflow: 'ellipsis',
+    overflow: 'hidden',
+    whiteSpace: 'nowrap',
+    pointerEvents: 'none',
   },
 ]);

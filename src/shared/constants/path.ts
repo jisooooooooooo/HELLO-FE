@@ -19,5 +19,4 @@ export const SIGNUP_STEPS = {
 export const REMINISCE_PATH = {
   LIST: PATH.REMINISCE,
   NEW: `${PATH.REMINISCE}/new`,
-  DETAIL: (id: string | number) => `${PATH.REMINISCE}/${id}`,
 } as const;

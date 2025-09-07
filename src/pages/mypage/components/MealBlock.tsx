@@ -4,8 +4,7 @@ type MealBlockProps = {
   title: string;
   times: string[];
   selected: string;
-  // eslint-disable-next-line no-unused-vars
-  onSelect: (time: string) => void;
+  onSelect: (_time: string) => void;
 };
 
 function MealBlock({ title, times, selected, onSelect }: MealBlockProps) {
