@@ -29,8 +29,8 @@ const Home = () => {
       {/* 챗봇 CTA (풀폭, 파란카드) */}
       <section className={styles.chatCta} aria-label="챗봇과 대화하기">
         <div className={styles.chatTexts}>
-          <h2 className={styles.chatTitle}>챗봇과 대화하기</h2>
-          <p className={styles.chatDesc}>버튼을 눌러 챗봇과 대화해보세요</p>
+          <h2 className={styles.chatTitle}>가족 AI와 대화하기</h2>
+          <p className={styles.chatDesc}>AI가 당신의 이야기에 귀 기울여줄게요</p>
           <button type="button" className={styles.chatButton} onClick={() => navigate('/chat')}>
             채팅하러 가기
           </button>
@@ -69,7 +69,7 @@ const Home = () => {
       <section className={styles.scheduleCard}>
         <div className={styles.cardTextBlock}>
           <p className={styles.cardTitle}>일정</p>
-          <p className={styles.cardSub}>일정들을 확인해 보세요</p>
+          <p className={styles.cardSub}>중요한 일정을 확인하고 놓치지 마세요</p>
         </div>
         <img src="/svgs/home/calendar.svg" alt="" aria-hidden className={styles.scheduleArt} />
         <button
