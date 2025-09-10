@@ -25,7 +25,7 @@ const OverlayModal = ({ open, onClose, children }: Props) => {
   }
 
   return (
-    <div className={s.overlay} onClick={onClose} role="dialog" aria-modal>
+    <div className={s.overlay} onClick={onClose} role="dialog" aria-modal="true">
       <div className={s.panel} onClick={(e) => e.stopPropagation()}>
         {children}
       </div>

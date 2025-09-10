@@ -1,15 +1,13 @@
 import { Outlet } from 'react-router-dom';
 import { type ReactNode } from 'react';
 
-type LayoutProps = { header?: ReactNode };
+type LayoutProps = { header?: ReactNode; children?: ReactNode };
 
-const Layout = ({ header }: LayoutProps) => {
+const Layout = ({ header, children }: LayoutProps) => {
   return (
     <>
       <header>{header}</header>
-      <main>
-        <Outlet />
-      </main>
+      <main>{children ?? <Outlet />}</main>
     </>
   );
 };

@@ -85,7 +85,7 @@ export const MainRoutes: RouteObject[] = [
   },
   // 게임
   {
-    element: <Layout header={<PageHeader title="같은 그림 찾기" confirmOnBack />} />,
-    children: [{ path: PATH.GAME, element: <Game /> }],
+    element: <Game />,
+    path: PATH.GAME,
   },
 ];

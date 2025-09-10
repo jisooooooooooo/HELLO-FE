@@ -4,6 +4,8 @@ import GameIntro from '../components/GameIntro';
 import GamePlay from '../components/GamePlay';
 import GameCue from '../components/GameCue';
 
+import PageHeader from '@/common/components/header/PageHeader';
+import Layout from '@/shared/components/layout/Layout';
 import { useMemoryGame } from '@/pages/game/hooks/useMemoryGame';
 
 const Game = () => {
@@ -24,18 +26,24 @@ const Game = () => {
     return <GameCue phase={cue} />;
   }
   if (!started) {
-    return <GameIntro onStart={handleStartWithCue} />;
+    return (
+      <Layout header={<PageHeader title="같은 그림 찾기" />}>
+        <GameIntro onStart={handleStartWithCue} />
+      </Layout>
+    );
   }
 
   return (
-    <GamePlay
-      cards={cards}
-      formattedTime={formattedTime}
-      allMatched={allMatched}
-      onRestart={restartGame}
-      locking={locking}
-      onPick={pickCard}
-    />
+    <Layout header={<PageHeader title="같은 그림 찾기" confirmOnBack isGamePlaying />}>
+      <GamePlay
+        cards={cards}
+        formattedTime={formattedTime}
+        allMatched={allMatched}
+        onRestart={restartGame}
+        locking={locking}
+        onPick={pickCard}
+      />
+    </Layout>
   );
 };
 

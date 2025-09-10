@@ -12,6 +12,7 @@ interface PageHeaderProps {
   confirmTitle?: string;
   confirmDescription?: string;
   onConfirmExit?: () => void;
+  isGamePlaying?: boolean;
 }
 
 const PageHeader = ({
@@ -21,6 +22,7 @@ const PageHeader = ({
   confirmTitle,
   confirmDescription,
   onConfirmExit,
+  isGamePlaying = false,
 }: PageHeaderProps) => {
   const navigate = useNavigate();
 
@@ -30,22 +32,21 @@ const PageHeader = ({
       return;
     }
 
-    if (!confirmOnBack) {
-      navigate(PATH.GAME);
-      return;
-    }
-
-    const ok = window.confirm(
-      `${confirmTitle ?? '나가시겠습니까?'}\n${
-        confirmDescription ?? '게임 기록이 저장되지 않을 수 있습니다.'
-      }`.trim(),
-    );
-    if (ok) {
-      if (onConfirmExit) {
-        onConfirmExit();
-      } else {
-        window.location.assign(PATH.GAME);
+    if (confirmOnBack && isGamePlaying) {
+      const ok = window.confirm(
+        `${confirmTitle ?? '나가시겠습니까?'}\n${
+          confirmDescription ?? '게임 기록이 저장되지 않을 수 있습니다.'
+        }`.trim(),
+      );
+      if (ok) {
+        if (onConfirmExit) {
+          onConfirmExit();
+        } else {
+          window.location.assign(PATH.GAME);
+        }
       }
+    } else {
+      navigate(-1);
     }
   };
 
