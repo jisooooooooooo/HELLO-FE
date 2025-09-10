@@ -34,4 +34,14 @@ export const colors = {
   yellow04: '#FFCE3B',
 
   error01: '#FF0000',
+
+  gameOrange01: '#FFC75F',
+  gamePink01: '#D65DB1',
+  gameRose01: '#FF6F91',
+  gamePurple01: '#845EC2',
+  gamePeach01: '#FF9671',
+  gameYellow01: '#F9F871',
+  gameOrange02: '#F8C35E',
+  gameRose02: '#FF7CA0',
+  gameSky01: '#A6D3FF',
 } as const;

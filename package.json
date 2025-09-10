@@ -14,6 +14,8 @@
     "@tanstack/react-query": "^5.83.0",
     "@vanilla-extract/css": "^1.17.4",
     "axios": "^1.11.0",
+    "canvas-confetti": "^1.9.3",
+    "overlay-kit": "^1.8.5",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-router-dom": "^7.7.1"
@@ -22,6 +24,7 @@
     "@eslint/js": "^9.30.1",
     "@svgr/cli": "^8.1.0",
     "@tanstack/react-query-devtools": "^5.83.0",
+    "@types/canvas-confetti": "^1.9.0",
     "@types/react": "^19.1.8",
     "@types/react-dom": "^19.1.6",
     "@typescript-eslint/eslint-plugin": "^8.38.0",

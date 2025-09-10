@@ -5,18 +5,15 @@ const SvgIcClock = (props: SVGProps<SVGSVGElement>) => (
     width="1em"
     height="1em"
     fill="none"
-    viewBox="0 0 24 24"
+    viewBox="0 0 30 30"
     {...props}
   >
     <path
-      fill="#000"
-      d="M12.75 7a.75.75 0 1 0-1.5 0v5a.75.75 0 0 0 .352.636l3 1.875a.75.75 0 1 0 .796-1.272l-2.648-1.655z"
-    />
-    <path
-      fill="#000"
-      fillRule="evenodd"
-      d="M12 3.25a8.75 8.75 0 1 0 0 17.5 8.75 8.75 0 0 0 0-17.5M4.75 12a7.25 7.25 0 1 1 14.5 0 7.25 7.25 0 0 1-14.5 0"
-      clipRule="evenodd"
+      stroke="#000"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth={2}
+      d="M6.25 3.75 2.5 7.5m25 0-3.75-3.75m-16.25 20L5 26.25m17.5-2.5 2.5 2.5m-10-15v5l2.5 2.5m-2.5 7.5a10 10 0 1 0 0-20 10 10 0 0 0 0 20"
     />
   </svg>
 );

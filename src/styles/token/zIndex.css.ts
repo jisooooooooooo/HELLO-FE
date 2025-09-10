@@ -4,4 +4,5 @@ export const zIndex = {
   tooltip: 3000,
   dropdown: 4000,
   overlay: 5000,
+  confetti: 9999,
 } as const;

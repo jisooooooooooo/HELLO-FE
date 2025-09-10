@@ -2,8 +2,14 @@ import { useNavigate } from 'react-router-dom';
 
 import * as styles from './Home.css.ts';
 
+import { PATH } from '@/shared/constants/path';
+
 const Home = () => {
   const navigate = useNavigate();
+  const handleGoChat = () => navigate(PATH.CHAT);
+  const handleGoReminisce = () => navigate(PATH.REMINISCE);
+  const handleGoGame = () => navigate(PATH.GAME);
+  const handleGoSchedule = () => navigate(PATH.SCHEDULE);
 
   return (
     <div className={styles.container}>
@@ -31,7 +37,7 @@ const Home = () => {
         <div className={styles.chatTexts}>
           <h2 className={styles.chatTitle}>가족 AI와 대화하기</h2>
           <p className={styles.chatDesc}>AI가 당신의 이야기에 귀 기울여줄게요</p>
-          <button type="button" className={styles.chatButton} onClick={() => navigate('/chat')}>
+          <button type="button" className={styles.chatButton} onClick={handleGoChat}>
             채팅하러 가기
           </button>
         </div>
@@ -40,7 +46,7 @@ const Home = () => {
 
       {/* 2칸 그리드: 회상기록 / 게임 */}
       <section className={styles.gridTwo}>
-        <button type="button" className={styles.cardMemo} onClick={() => navigate('/reminisce')}>
+        <button type="button" className={styles.cardMemo} onClick={handleGoReminisce}>
           <div className={styles.cardTextBlock}>
             <p className={styles.cardTitle}>회상기록</p>
             <p className={styles.cardSub}>
@@ -52,7 +58,7 @@ const Home = () => {
           <img src="/svgs/home/reminisce_book.svg" alt="" aria-hidden className={styles.cardArt} />
         </button>
 
-        <button type="button" className={styles.cardGame}>
+        <button type="button" className={styles.cardGame} onClick={handleGoGame}>
           <div className={styles.cardTextBlock}>
             <p className={styles.cardTitle}>게임</p>
             <p className={styles.cardSub}>
@@ -75,7 +81,7 @@ const Home = () => {
         <button
           type="button"
           className={styles.scheduleOverlay}
-          onClick={() => navigate('/schedule')}
+          onClick={handleGoSchedule}
           aria-label="일정 화면으로 이동"
         />
       </section>
