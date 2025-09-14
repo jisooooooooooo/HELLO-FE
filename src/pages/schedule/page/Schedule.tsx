@@ -1,7 +1,10 @@
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 
 import * as styles from './Schedule.css';
+import ScheduleEditModal from './ScheduleEditModal';
+import type { ScheduleEditInit } from './ScheduleEditModal';
 
+/* ================== 타입 & 유틸 ================== */
 type ScheduleItem = {
   id: string;
   time: string; // "11시30분"
@@ -119,14 +122,17 @@ function groupByTime(items: ScheduleItem[]) {
   return Array.from(map.entries()); // 데이터 순서 유지
 }
 
-/* 선택한 날 ~ 그 주 토요일까지 일정 모으기 */
-const getWeekTrailItems = (fromDate: Date): ScheduleItem[] => {
+/* 선택한 날 ~ 그 주 토요일까지 일정 모으기 (store 버전) */
+const getWeekTrailItems = (
+  fromDate: Date,
+  store: Record<string, ScheduleItem[]>,
+): ScheduleItem[] => {
   const last = endOfWeek(fromDate);
   const out: ScheduleItem[] = [];
 
   for (let d = new Date(fromDate); d.getTime() <= last.getTime(); d = addDays(d, 1)) {
     const key = ymd(d);
-    const arr = MOCK[key];
+    const arr = store[key];
     if (arr && arr.length) {
       out.push(...arr);
     }
@@ -137,16 +143,73 @@ const getWeekTrailItems = (fromDate: Date): ScheduleItem[] => {
 const Schedule = () => {
   const [selected, setSelected] = useState<Date>(today);
 
+  // 모달에서 실제로 값을 반영하기 위해 로컬 상태에 데이터 보관
+  const [data, setData] = useState<Record<string, ScheduleItem[]>>({ ...MOCK });
+
+  // 모달 열림 상태
+  const [editing, setEditing] = useState<ScheduleItem | null>(null);
+
   // 헤더 날짜
   const { big, sub, sub2 } = formatHeader(selected);
 
   // 주간 스트립(일~토)
   const sow = startOfWeek(selected);
-  const weekDays = Array.from({ length: 7 }, (_, i) => addDays(sow, i));
+  const weekDays = useMemo(() => Array.from({ length: 7 }, (_, i) => addDays(sow, i)), [sow]);
 
   // 타임라인 데이터: “선택일 ~ 토요일”
-  const items = getWeekTrailItems(selected);
+  const items = getWeekTrailItems(selected, data);
   const grouped = groupByTime(items);
+
+  /* ===== 모달 저장/삭제 로직 ===== */
+  const handleSave = (payload: ScheduleEditInit) => {
+    setData((prev) => {
+      // 1) 기존 일정 제거
+      const next: Record<string, ScheduleItem[]> = Object.fromEntries(
+        Object.entries(prev).map(([k, v]) => [k, [...v]]),
+      );
+      let oldDone = false;
+
+      for (const [_k, arr] of Object.entries(next)) {
+        const idx = arr.findIndex((x) => x.id === payload.id);
+        if (idx >= 0) {
+          oldDone = arr[idx].done ?? false;
+          arr.splice(idx, 1);
+          break;
+        }
+      }
+
+      // 2) 새 일정 삽입
+      const newDateKey = payload.date; // yyyy-mm-dd
+      const newLabel = labelFromDate(new Date(newDateKey));
+      const item: ScheduleItem = {
+        id: payload.id,
+        ymd: newDateKey,
+        ymdLabel: newLabel,
+        time: payload.time,
+        title: payload.title,
+        place: payload.place,
+        note: payload.note,
+        done: oldDone,
+      };
+      if (!next[newDateKey]) {
+        next[newDateKey] = [];
+      }
+      next[newDateKey].push(item);
+
+      return next;
+    });
+    setEditing(null);
+  };
+
+  const handleDelete = (id: string) => {
+    setData((prev) => {
+      const next: Record<string, ScheduleItem[]> = Object.fromEntries(
+        Object.entries(prev).map(([k, v]) => [k, v.filter((x) => x.id !== id)]),
+      );
+      return next;
+    });
+    setEditing(null);
+  };
 
   return (
     <div className={styles.wrap}>
@@ -189,7 +252,7 @@ const Schedule = () => {
         })}
       </section>
 
-      {/* 타임라인 헤더 (시간 | 일정) */}
+      {/* 타임라인 헤더 */}
       <div className={styles.timelineHeader}>
         <span className={styles.tlLabelTime}>시간</span>
         <span className={styles.tlHeaderDivider} aria-hidden />
@@ -210,15 +273,12 @@ const Schedule = () => {
 
                 <div className={styles.timeMarks}>
                   <label className={styles.checkboxWrap} title="완료">
-                    {/* 상태는 input이 가짐 */}
                     <input
                       type="checkbox"
                       defaultChecked={arr[0]?.done}
                       className={styles.checkInput}
                     />
-                    {/* 항상 보이는 사각형 아이콘 */}
                     <img src="/svgs/ic_schedule_rect.svg" alt="" className={styles.checkRect} />
-                    {/* 체크되면 보이는 검정 틱 */}
                     <span className={styles.checkTick} />
                   </label>
                 </div>
@@ -230,7 +290,7 @@ const Schedule = () => {
               {/* 오른쪽: 카드들 */}
               <div className={styles.cardsCol}>
                 {arr.map((it) => {
-                  const isTodayCard = it.ymd === todayKey; // ✅ 오늘 일정만 파란색
+                  const isTodayCard = it.ymd === todayKey; // 오늘 일정만 파란색
                   return (
                     <article
                       key={it.id}
@@ -247,7 +307,12 @@ const Schedule = () => {
                         )}
                       </div>
 
-                      <button type="button" className={styles.cardMore} aria-label="더보기">
+                      <button
+                        type="button"
+                        className={styles.cardMore}
+                        aria-label="더보기"
+                        onClick={() => setEditing(it)} // 모달 오픈
+                      >
                         <img src="/svgs/ic_schedule_more.svg" alt="" />
                       </button>
                     </article>
@@ -258,6 +323,23 @@ const Schedule = () => {
           ))
         )}
       </section>
+
+      {/* ===== 모달 렌더링 ===== */}
+      {editing && (
+        <ScheduleEditModal
+          initial={{
+            id: editing.id,
+            title: editing.title,
+            place: editing.place,
+            note: editing.note,
+            date: editing.ymd,
+            time: editing.time,
+          }}
+          onClose={() => setEditing(null)}
+          onSave={handleSave}
+          onDelete={handleDelete}
+        />
+      )}
     </div>
   );
 };
