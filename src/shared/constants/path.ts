@@ -8,6 +8,7 @@ export const PATH = {
   CHATLIST: '/chat/list',
   SCHEDULE: '/schedule',
   GAME: '/game',
+  GAME_MAIN: '/game/main',
 } as const;
 
 export const SIGNUP_STEPS = {

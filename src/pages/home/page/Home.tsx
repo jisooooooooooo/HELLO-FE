@@ -8,8 +8,8 @@ const Home = () => {
   const navigate = useNavigate();
   const handleGoChat = () => navigate(PATH.CHAT);
   const handleGoReminisce = () => navigate(PATH.REMINISCE);
-  const handleGoGame = () => navigate(PATH.GAME);
   const handleGoSchedule = () => navigate(PATH.SCHEDULE);
+  const handleGoGame = () => navigate(PATH.GAME_MAIN);
 
   return (
     <div className={styles.container}>
