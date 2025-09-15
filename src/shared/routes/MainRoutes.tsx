@@ -21,6 +21,7 @@ import ChatList from '@/pages/chat/page/ChatList';
 import Schedule from '@/pages/schedule/page/Schedule';
 import Game from '@/pages/game/page/Game';
 import GameMain from '@/pages/game/page/GameMain';
+import GameResults from '@/pages/game/page/GameResults';
 
 export const MainRoutes: RouteObject[] = [
   // 기본 헤더
@@ -93,5 +94,10 @@ export const MainRoutes: RouteObject[] = [
   {
     element: <Layout header={<PageHeader title="게임" />} />,
     children: [{ path: PATH.GAME_MAIN, element: <GameMain /> }],
+  },
+  //게임 결과
+  {
+    element: <Layout header={<PageHeader title="게임 결과" />} />,
+    children: [{ path: PATH.GAME_RESULTS, element: <GameResults /> }],
   },
 ];

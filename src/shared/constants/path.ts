@@ -9,6 +9,7 @@ export const PATH = {
   SCHEDULE: '/schedule',
   GAME: '/game',
   GAME_MAIN: '/game/main',
+  GAME_RESULTS: '/game/results',
 } as const;
 
 export const SIGNUP_STEPS = {
