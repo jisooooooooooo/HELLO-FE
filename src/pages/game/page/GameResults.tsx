@@ -1,7 +1,6 @@
 // src/pages/game/GameResults.tsx
 import { useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
-
 import { PATH } from '@shared/constants/path';
 
 import * as s from './GameResults.css.ts';
@@ -15,7 +14,7 @@ export default function GameResults() {
   const allPlayers: Player[] = [
     { id: '01', name: '양서연', time: '05:20' },
     { id: '02', name: '임지수', time: '05:20' },
-    { id: '03', name: '조소율', time: '05:20' },
+    { id: '03', name: '조소윤', time: '05:20' },
     { id: '04', name: '홍다인', time: '05:20' },
     { id: '05', name: '한가람', time: '05:20' },
     { id: '06', name: '정하린', time: '05:20' },

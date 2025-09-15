@@ -22,6 +22,7 @@ export const titleBox = style({
   width: 325,
   height: 84,
   background: bgBox,
+  marginBottom: 20,
   borderRadius: 20,
   display: 'flex',
   alignItems: 'center',
@@ -40,6 +41,7 @@ export const titleText = style({
 export const myCard = style({
   width: 325,
   height: 64,
+  marginBottom: 10,
   background: bgBox,
   borderRadius: 16,
   display: 'grid',
@@ -131,6 +133,7 @@ export const timePill = style({
 export const startBtn = style({
   width: 260,
   height: 45,
+  marginTop: 10,
   border: 'none',
   borderRadius: 16,
   background: btnBlue,
@@ -140,7 +143,7 @@ export const startBtn = style({
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
-  cursor: 'pointer',
+  //cursor: 'pointer',
   boxShadow: '0 4px 12px rgba(0,0,0,0.05)',
   transition: 'transform .05s ease, filter .15s ease',
   selectors: {
